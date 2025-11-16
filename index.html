@@ -1,37 +1,646 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; max-width: 100%; }
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif; line-height: 1.6; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container { width: 1920px; margin: 0 auto; padding: 16px; }
-    nav a { margin-right: 12px; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .col-12 { grid-column: span 12; }
-    @media (min-width: 768px) { .col-md-6 { grid-column: span 6; } }
-    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
-  </style>
-</head>
-<body>
-  <header class="container" role="banner">
-    <nav aria-label="主選單">
-      <a href="#about">關於我</a>
-      <a href="#projects">作品集</a>
-      <a href="https://example.com/blog">技術部落格</a>
-      <a href="mailto:me@example.com">聯絡我</a>
-    </nav>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <p>歡迎來到我的個人網站！這裡整理了學習紀錄、Side Project 與實作心得。</p>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>我的個人作品集</title>
+    <style>
+      /* CSS:BASE-START */
+      * {
+        box-sizing: border-box;
+      }
 
-  <footer class="container" role="contentinfo">
-    <p>© 2025 My Portfolio · <a href="#">GitHub</a></p>
-    <img src="https://source.unsplash.com/600x200/?technology,abstract" alt="">
-  </footer>
-</body>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background-color: #020617;
+        color: #e5e7eb;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      header {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        backdrop-filter: blur(12px);
+        background: linear-gradient(
+          to bottom,
+          rgba(15, 23, 42, 0.9),
+          rgba(15, 23, 42, 0.6),
+          transparent
+        );
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .nav-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .site-mark {
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9ca3af;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .nav-links a {
+        padding: 0.3rem 0.5rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+      }
+
+      .nav-links a:hover {
+        border-color: rgba(148, 163, 184, 0.5);
+        background-color: rgba(15, 23, 42, 0.8);
+      }
+
+      main {
+        min-height: 100vh;
+      }
+
+      .section {
+        padding: 3.5rem 1.5rem;
+      }
+
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        margin: 0 0 1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9ca3af;
+      }
+
+      .section-intro {
+        margin-bottom: 1.5rem;
+        color: #e5e7eb;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.15rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        color: #9ca3af;
+        margin-bottom: 0.75rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem 1.4rem;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        background-color: #e5e7eb;
+        color: #020617;
+        transition: background-color 0.15s ease, color 0.15s ease,
+          border-color 0.15s ease, transform 0.15s ease,
+          box-shadow 0.15s ease;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .btn:hover {
+        background-color: #f9fafb;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.45);
+        transform: translateY(-1px);
+        border-color: transparent;
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: #e5e7eb;
+        border-color: rgba(148, 163, 184, 0.7);
+      }
+
+      .btn-secondary:hover {
+        background-color: rgba(15, 23, 42, 0.95);
+        color: #f9fafb;
+      }
+
+      footer {
+        border-top: 1px solid rgba(148, 163, 184, 0.2);
+        padding: 1.5rem;
+        font-size: 0.85rem;
+        color: #9ca3af;
+        text-align: center;
+        background: radial-gradient(
+          circle at top,
+          rgba(59, 130, 246, 0.18),
+          transparent 55%
+        );
+      }
+      /* CSS:BASE-END */
+
+      /* CSS:HERO-START */
+      .section-hero {
+        padding-top: 4.5rem;
+        padding-bottom: 4.5rem;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(56, 189, 248, 0.18),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at top right,
+            rgba(129, 140, 248, 0.18),
+            transparent 60%
+          ),
+          linear-gradient(to bottom, #020617, #020617);
+      }
+
+      .hero-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 2.25rem;
+      }
+
+      .hero-copy {
+        max-width: 640px;
+      }
+
+      .hero-eyebrow {
+        font-size: 0.9rem;
+        color: #a5b4fc;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+
+      .hero-title {
+        font-size: 2.1rem;
+        margin: 0 0 0.75rem;
+        letter-spacing: 0.03em;
+      }
+
+      .hero-title span {
+        color: #38bdf8;
+      }
+
+      .hero-subtitle {
+        font-size: 0.98rem;
+        color: #cbd5f5;
+        margin: 0 0 1.5rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.82rem;
+        color: #9ca3af;
+      }
+
+      .hero-meta span {
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+      }
+      /* CSS:HERO-END */
+
+      /* CSS:ABOUT-START */
+      .section-about {
+        background-color: #020617;
+      }
+
+      .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+      }
+
+      .about-text {
+        max-width: 640px;
+      }
+
+      .about-text h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9ca3af;
+      }
+
+      .about-text p {
+        margin: 0 0 0.85rem;
+        color: #e5e7eb;
+        font-size: 0.97rem;
+      }
+
+      .about-highlights {
+        list-style: none;
+        margin: 0 0 1.5rem;
+        padding: 0;
+        display: grid;
+        gap: 0.5rem;
+      }
+
+      .about-highlights li {
+        position: relative;
+        padding-left: 1.3rem;
+        font-size: 0.95rem;
+        color: #cbd5f5;
+      }
+
+      .about-highlights li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #38bdf8;
+      }
+
+      .about-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .about-photo {
+        max-width: 420px;
+        border-radius: 1rem;
+        overflow: hidden;
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        background: radial-gradient(
+          circle at top,
+          rgba(56, 189, 248, 0.25),
+          transparent 60%
+        );
+      }
+
+      .about-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      /* CSS:ABOUT-END */
+
+      /* CSS:SKILLS-START */
+      .section-skills {
+        background: radial-gradient(
+            circle at bottom left,
+            rgba(52, 211, 153, 0.16),
+            transparent 60%
+          ),
+          #020617;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .skill-pill {
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+        color: #e5e7eb;
+        text-align: center;
+      }
+      /* CSS:SKILLS-END */
+
+      /* CSS:PROJECTS-START */
+      .section-projects {
+        background-color: #020617;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.2rem;
+        margin-top: 1rem;
+      }
+
+      .project-card {
+        border-radius: 1rem;
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        padding: 1rem 1.2rem;
+        background: radial-gradient(
+          circle at top left,
+          rgba(96, 165, 250, 0.22),
+          transparent 60%
+        );
+      }
+
+      .project-title {
+        font-size: 1rem;
+        margin: 0 0 0.35rem;
+      }
+
+      .project-meta {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-desc {
+        font-size: 0.9rem;
+        color: #e5e7eb;
+        margin: 0;
+      }
+      /* CSS:PROJECTS-END */
+
+      /* CSS:CONTACT-START */
+      .section-contact {
+        background: radial-gradient(
+            circle at top,
+            rgba(251, 191, 36, 0.12),
+            transparent 60%
+          ),
+          #020617;
+      }
+
+      .contact-inner {
+        max-width: 540px;
+      }
+
+      .contact-inner h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9ca3af;
+      }
+
+      .contact-inner p {
+        margin: 0 0 0.85rem;
+        font-size: 0.95rem;
+        color: #e5e7eb;
+      }
+
+      .contact-email {
+        font-weight: 500;
+        color: #fbbf24;
+      }
+      /* CSS:CONTACT-END */
+
+      /* CSS:RWD-START */
+      @media (min-width: 768px) {
+        header {
+          padding-inline: 2rem;
+        }
+
+        .section {
+          padding-inline: 2rem;
+          padding-block: 4rem;
+        }
+
+        .hero-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .hero-title {
+          font-size: 2.6rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.05rem;
+          max-width: 520px;
+        }
+
+        .about-content {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .about-text {
+          flex: 1 1 55%;
+        }
+
+        .about-photo {
+          flex: 1 1 40%;
+        }
+
+        .skills-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .projects-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 1440px) {
+        .section {
+          padding-block: 4.5rem;
+        }
+
+        .container {
+          max-width: 1040px;
+        }
+
+        .hero-title {
+          font-size: 3rem;
+        }
+      }
+      /* CSS:RWD-END */
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav-inner">
+        <div class="site-mark">Portfolio</div>
+        <nav class="nav-links" aria-label="主要導覽">
+          <a href="#about">關於我</a>
+          <a href="#skills">技能</a>
+          <a href="#projects">作品集</a>
+          <a href="#contact">聯絡</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- SECTION:HERO-START -->
+      <section id="hero" class="section section-hero">
+        <div class="container">
+          <div class="hero-inner">
+            <div class="hero-copy">
+              <div class="hero-eyebrow">Front-end &amp; Teaching</div>
+              <h1 class="hero-title">
+                穩穩做事的
+                <span>前端工程師</span>
+              </h1>
+              <p class="hero-subtitle">
+                我專注在把需求翻成清楚的畫面與元件，協助你一步步把想法變成可以上線的網頁，同時用易懂的方式說明每個設計決定。
+              </p>
+              <div class="hero-actions">
+                <a href="#projects" class="btn">查看作品集</a>
+                <a href="#contact" class="btn btn-secondary">聯絡我討論需求</a>
+              </div>
+            </div>
+            <div class="hero-meta">
+              <span>HTML / CSS / JavaScript</span>
+              <span>RWD 版型切版</span>
+              <span>教學與線上課程輔導</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:HERO-END -->
+
+      <!-- SECTION:ABOUT-START -->
+      <section id="about" class="section section-about">
+        <div class="container">
+          <div class="about-content">
+            <div class="about-text">
+              <h2>關於我</h2>
+              <p>
+                目前我主要從事前端開發與教學，協助客戶製作清晰、好維護的網頁介面，也接一些小型專案。熟悉
+                HTML、CSS、JavaScript，以及基礎的設計與排版，能把畫面拆成好理解的元件結構。
+              </p>
+              <p>
+                過去有多年教學與專案協作經驗，習慣先把需求講清楚，再一步步拆解與回報進度。做事風格穩健、重視溝通，也喜歡把複雜的技術，用一般人聽得懂的方式說明。
+              </p>
+              <ul class="about-highlights">
+                <li>把你的想法翻成具體的版面與元件規格。</li>
+                <li>協助整理網站內容結構，讓資訊更好閱讀。</li>
+                <li>為初學者設計友善的前端學習步驟與練習。</li>
+              </ul>
+              <div class="about-actions">
+                <a href="#projects" class="btn">查看作品集</a>
+                <a href="#contact" class="btn btn-secondary">聯絡我</a>
+              </div>
+            </div>
+            <div class="about-photo" aria-hidden="true">
+              <img
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80"
+                alt="在電腦前撰寫程式碼的工程師示意照片"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:ABOUT-END -->
+
+      <!-- SECTION:SKILLS-START -->
+      <section id="skills" class="section section-skills">
+        <div class="container">
+          <div class="pill">Skills</div>
+          <h2 class="section-title">我擅長的技術與工具</h2>
+          <p class="section-intro">
+            以前端開發為主，搭配基本設計感與教學能力，幫你把專案穩穩推進。
+          </p>
+          <div class="skills-grid" aria-label="技能列表">
+            <div class="skill-pill">HTML5 / 語意化標籤</div>
+            <div class="skill-pill">CSS3 / RWD 版型</div>
+            <div class="skill-pill">基礎 JavaScript</div>
+            <div class="skill-pill">版面規劃與排版</div>
+            <div class="skill-pill">教學設計與講義整理</div>
+            <div class="skill-pill">Git &amp; GitHub 基礎</div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:SKILLS-END -->
+
+      <!-- SECTION:PROJECTS-START -->
+      <section id="projects" class="section section-projects">
+        <div class="container">
+          <div class="pill">Projects</div>
+          <h2 class="section-title">作品與練習專案</h2>
+          <p class="section-intro">
+            以下是部分練習與實作案例，從版型切版到互動細節，示範我處理專案的方式。
+          </p>
+          <div class="projects-grid" aria-label="作品列表">
+            <article class="project-card">
+              <h3 class="project-title">個人作品集單頁網站</h3>
+              <p class="project-meta">HTML / CSS / RWD</p>
+              <p class="project-desc">
+                以手機優先設計實作一頁式作品集，包含 Hero、關於我、技能與聯絡區塊，專注在清楚的資訊架構。
+              </p>
+            </article>
+            <article class="project-card">
+              <h3 class="project-title">教學用示範頁面</h3>
+              <p class="project-meta">HTML 結構教學</p>
+              <p class="project-desc">
+                用簡單的版型示範常見標籤與排版，搭配註解，讓初學者能看懂每一段程式碼的用途。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:PROJECTS-END -->
+
+      <!-- SECTION:CONTACT-START -->
+      <section id="contact" class="section section-contact">
+        <div class="container">
+          <div class="contact-inner">
+            <h2>聯絡我</h2>
+            <p>
+              有合作想法、想優化現有網站，或想為學習前端安排一套穩定可行的計畫，都可以寫信給我，我會在可行的時間內回覆你。
+            </p>
+            <p>
+              Email：
+              <a
+                class="contact-email"
+                href="mailto:hello@example.com"
+                >hello@example.com</a
+              >
+            </p>
+            <p>也可以在來信中簡單介紹你的背景與目前遇到的問題。</p>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:CONTACT-END -->
+    </main>
+
+    <footer>
+      <span>© 2025 我的個人作品集．All rights reserved.</span>
+    </footer>
+  </body>
 </html>
